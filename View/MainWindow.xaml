@@ -1,0 +1,368 @@
+﻿<Window x:Class="PrototypeApp.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeApp.View"
+        mc:Ignorable="d"
+        Title="Модуль прототип" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="myHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="LightBlue"/>
+        </Style>
+        <DataTemplate x:Key="myHeaderTemplate">
+            <DockPanel>
+                <TextBlock FontSize="16" Foreground="DarkBlue">
+                    <TextBlock.Text>
+                        <Binding/>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+       
+        <TabControl Background ="LightBlue" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Name="DrillingMachinesTab">
+                <TabItem.Header>
+                    <TextBlock Text="Станки для сверловки"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" Command="{Binding OpenAddItemWnd}"/>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItemWnd}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ScrollViewer x:Name="DrillingMachineScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="ViewAllDrillingMachines" ItemsSource="{Binding AllDrillingMachines}"
+                          SelectedItem="{Binding SelectedDrillingMachine}">
+                    <ListView.View>
+                        <GridView
+                            ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                            ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                            <GridViewColumn Header="Модель"
+                                            DisplayMemberBinding="{Binding Path=D_Name}"/>
+                            <GridViewColumn Header="Страна изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Country}"/>
+                            <GridViewColumn Header="Компания изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Company}"/>
+                            <GridViewColumn Header="Дислокация компании"
+                                            DisplayMemberBinding="{Binding Path=Town}"/>
+                            <GridViewColumn Header="Стоимость станка, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=Cost}"/>
+                            <GridViewColumn Header="Стоимость шеф-монтажных и пуско-наладочных работ, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=CostM}"/>
+                            <GridViewColumn Header="Дата фиксации стоимости станка"
+                                            DisplayMemberBinding="{Binding Path=Date}"/>
+                            <GridViewColumn Header="Срок изготовления станка, мес"
+                                            DisplayMemberBinding="{Binding Path=Time}"/>
+                            <GridViewColumn Header="Масса"
+                                            DisplayMemberBinding="{Binding Path=Massa}"/>
+                            <GridViewColumn Header="Габаритные размеры станка, мм"
+                                            DisplayMemberBinding="{Binding Path=LBH}"/>
+                            <GridViewColumn Header="Мощность привода"
+                                            DisplayMemberBinding="{Binding Path=Energ}"/>
+                            <GridViewColumn Header="Суммарная мощность электродвигателя, кВт"
+                                            DisplayMemberBinding="{Binding Path=SumN}"/>
+                            <GridViewColumn Header="Номинальное напряжение питающей сети, В"
+                                            DisplayMemberBinding="{Binding Path=NUN}"/>
+                            <GridViewColumn Header="Номинальная частота питающей сети, Гц"
+                                            DisplayMemberBinding="{Binding Path=NGN}"/>
+                            <GridViewColumn Header="Вид тока питающей сети"
+                                            DisplayMemberBinding="{Binding Path=VI}"/>
+                            <GridViewColumn Header="Наибольший диаметр сверления, мм"
+                                            DisplayMemberBinding="{Binding Path=Dmax}"/>
+                            <GridViewColumn Header="Вылет шпинделя наибольший, не менее мм"
+                                            DisplayMemberBinding="{Binding Path=E1}"/>
+                            <GridViewColumn Header="Вылет шпинделя наименьший, не более, мм"
+                                            DisplayMemberBinding="{Binding Path=E2}"/>
+                            <GridViewColumn Header="Наибольший крутящий момент на шпинделе, Нм"
+                                            DisplayMemberBinding="{Binding Path=Emax}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+             </ScrollViewer>
+            </TabItem>
+            <TabItem Name="BendingMachinesTab">
+                <TabItem.Header>
+                    <TextBlock Text="Станки для гибки"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" Command="{Binding OpenAddItemWnd}"/>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItemWnd}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ScrollViewer x:Name="BendingMachineScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="ViewAllBendingMachines" ItemsSource="{Binding AllBendingMachines}"
+                          SelectedItem="{Binding SelectedBendingMachine}">
+                        <ListView.View>
+                            <GridView
+                            ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                            ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                                <GridViewColumn Header="Модель"
+                                            DisplayMemberBinding="{Binding Path=G_Name}"/>
+                                <GridViewColumn Header="Страна изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Country}"/>
+                                <GridViewColumn Header="Компания изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Company}"/>
+                                <GridViewColumn Header="Дислокация компании"
+                                            DisplayMemberBinding="{Binding Path=Town}"/>
+                                <GridViewColumn Header="Стоимость станка, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=Cost}"/>
+                                <GridViewColumn Header="Стоимость шеф-монтажных и пуско-наладочных работ, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=CostM}"/>
+                                <GridViewColumn Header="Дата фиксации стоимости станка"
+                                            DisplayMemberBinding="{Binding Path=Date}"/>
+                                <GridViewColumn Header="Срок изготовления станка, мес"
+                                            DisplayMemberBinding="{Binding Path=Time}"/>
+                                <GridViewColumn Header="Наибольшее усилие гибки, кН"
+                                            DisplayMemberBinding="{Binding Path=Pkh}"/>
+                                <GridViewColumn Header="Наибольшее усилие гибки, тс"
+                                            DisplayMemberBinding="{Binding Path=Ptc}"/>
+                                <GridViewColumn Header="Максимальная ширина обрабатываемого листа, 
+мм"
+                                            DisplayMemberBinding="{Binding Path=Bmax}"/>
+                                <GridViewColumn Header="Максимальная длина обрабатываемого листа, мм"
+                                            DisplayMemberBinding="{Binding Path=Lmax}"/>
+                                <GridViewColumn Header="Максимальная толщина гнутого листа одинарной 
+кривизны, мм"
+                                            DisplayMemberBinding="{Binding Path=Sod}"/>
+                                <GridViewColumn Header="Максимальная толщина гнутого листа двоякой 
+кривизны, мм"
+                                            DisplayMemberBinding="{Binding Path=Sdv}"/>
+                                <GridViewColumn Header="Масса"
+                                            DisplayMemberBinding="{Binding Path=Massa}"/>
+                                <GridViewColumn Header="Габаритные размеры станка, мм"
+                                            DisplayMemberBinding="{Binding Path=LBH}"/>
+                                <GridViewColumn Header="Мощность привода"
+                                            DisplayMemberBinding="{Binding Path=Energ}"/>
+                                <GridViewColumn Header="Номинальное напряжение питающей сети, В"
+                                            DisplayMemberBinding="{Binding Path=NUN}"/>
+                                <GridViewColumn Header="Номинальная частота питающей сети, Гц"
+                                            DisplayMemberBinding="{Binding Path=NGN}"/>
+                                <GridViewColumn Header="Вид тока питающей сети"
+                                            DisplayMemberBinding="{Binding Path=VI}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </TabItem>
+            
+            <TabItem Name="CuttingMachinesTab">
+                <TabItem.Header>
+                    <TextBlock Text="Станки для резки"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" Command="{Binding OpenAddItemWnd}"/>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItemWnd}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ScrollViewer x:Name="CuttingMachineScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="ViewAllCuttingMachines" ItemsSource="{Binding AllCuttingMachines}"
+                          SelectedItem="{Binding SelectedCuttingMachine}">
+                        <ListView.View>
+                            <GridView
+                            ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                            ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                                <GridViewColumn Header="Модель"
+                                            DisplayMemberBinding="{Binding Path=C_Name}"/>
+                                <GridViewColumn Header="Страна изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Country}"/>
+                                <GridViewColumn Header="Компания изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Company}"/>
+                                <GridViewColumn Header="Дислокация компании"
+                                            DisplayMemberBinding="{Binding Path=Town}"/>
+                                <GridViewColumn Header="Стоимость станка, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=Cost}"/>
+                                <GridViewColumn Header="Стоимость шеф-монтажных и пуско-наладочных работ, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=CostM}"/>
+                                <GridViewColumn Header="Дата фиксации стоимости станка"
+                                            DisplayMemberBinding="{Binding Path=Date}"/>
+                                <GridViewColumn Header="Срок изготовления станка, мес"
+                                            DisplayMemberBinding="{Binding Path=Time}"/>
+                                <GridViewColumn Header="Длина рабочего стола, мм"
+                                            DisplayMemberBinding="{Binding Path=L}"/>
+                                <GridViewColumn Header="Ширина рабочего стола, мм"
+                                            DisplayMemberBinding="{Binding Path=B}"/>
+                                <GridViewColumn Header="Максимальная скорость резки, м/мин"
+                                            DisplayMemberBinding="{Binding Path=Vmax}"/>
+                                <GridViewColumn Header=" Максимальная скорость холостых 
+переходов, м/мин"
+                                            DisplayMemberBinding="{Binding Path=Vtra}"/>
+                                <GridViewColumn Header=" Расход абразива, г/мин"
+                                            DisplayMemberBinding="{Binding Path=Abr}"/>
+                                <GridViewColumn Header="Скорость резки листа толщиной 4 мм из 
+сплава ПТ-3В, м/мин"
+                                            DisplayMemberBinding="{Binding Path=Vs}"/>
+                                <GridViewColumn Header="Масса станка"
+                                            DisplayMemberBinding="{Binding Path=Massa}"/>
+                                <GridViewColumn Header="Установленная мощность станка, кВт"
+                                            DisplayMemberBinding="{Binding Path=Energ}"/>
+                                <GridViewColumn Header="Номинальное напряжение питающей сети, В"
+                                            DisplayMemberBinding="{Binding Path=NUN}"/>
+                                <GridViewColumn Header="Номинальная частота питающей сети, Гц"
+                                            DisplayMemberBinding="{Binding Path=NGN}"/>
+                                <GridViewColumn Header="Вид тока питающей сети "
+                                            DisplayMemberBinding="{Binding Path=VI}"/>
+                                <GridViewColumn Header="Расход абразива, г/мин"
+                                            DisplayMemberBinding="{Binding Path=Abr}"/>
+                                <GridViewColumn Header="Марка допускаемого абразивного материала"
+                                            DisplayMemberBinding="{Binding Path=AbrM}"/>
+                                <GridViewColumn Header="Максимальная производительность насоса, 
+л/мин"
+                                            DisplayMemberBinding="{Binding Path=Ppump}"/>
+                                <GridViewColumn Header="Номинальное давление, бар"
+                                            DisplayMemberBinding="{Binding Path=Pnom}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="ReportTab">
+                <TabItem.Header>
+                    <TextBlock Text="Расчеты"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Экспорт" Command="{Binding ExportItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView x:Name="ViewAllReports" ItemsSource="{Binding AllReports}"
+                          SelectedItem="{Binding SelectedReport}">
+                    <ListView.View>
+                        <GridView
+                            ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                            ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                            <GridViewColumn Header="Имя" 
+                                            DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn Header="Количество станков для гибки" 
+                                            DisplayMemberBinding="{Binding Path=BendingMachinesAmount}"/>
+                            <GridViewColumn Header="Количество станков для сверловки " 
+                                            DisplayMemberBinding="{Binding Path=DrillingMachinesAmount}"/>
+                            <GridViewColumn Header="Количество станков для резки" 
+                                            DisplayMemberBinding="{Binding Path=CuttingMachinesAmount}"/>
+                            <GridViewColumn Header="Количество станков для сварки" 
+                                            DisplayMemberBinding="{Binding Path=WeldingMachinesAmount}"/>
+                            <GridViewColumn Header="Дата расчета" 
+                                            DisplayMemberBinding="{Binding Path=CreatedAt}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            
+            <TabItem Name="WeldingMachinesTab">
+                <TabItem.Header>
+                    <TextBlock Text="Станки для cварки"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" Command="{Binding OpenAddItemWnd}"/>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItemWnd}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ScrollViewer x:Name="WeldingMachineScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="ViewAllWeldingMachines" ItemsSource="{Binding AllWeldingMachines}"
+                          SelectedItem="{Binding SelectedWeldingMachine}">
+                        <ListView.View>
+                            <GridView
+                            ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                            ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                                <GridViewColumn Header="Модель"
+                                            DisplayMemberBinding="{Binding Path=V_Name}"/>
+                                <GridViewColumn Header="Страна изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Country}"/>
+                                <GridViewColumn Header="Компания изготовитель"
+                                            DisplayMemberBinding="{Binding Path=Company}"/>
+                                <GridViewColumn Header="Дислокация компании"
+                                            DisplayMemberBinding="{Binding Path=Town}"/>
+                                <GridViewColumn Header="Стоимость станка, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=Cost}"/>
+                                <GridViewColumn Header="Стоимость шеф-монтажных и пуско-наладочных работ, тыс. руб"
+                                            DisplayMemberBinding="{Binding Path=CostM}"/>
+                                <GridViewColumn Header="Дата фиксации стоимости станка"
+                                            DisplayMemberBinding="{Binding Path=Date}"/>
+                                <GridViewColumn Header="Срок изготовления станка, мес"
+                                            DisplayMemberBinding="{Binding Path=Time}"/>
+                                <GridViewColumn Header="Масса оборудования, т"
+                                            DisplayMemberBinding="{Binding Path=Massa}"/>
+                                <GridViewColumn Header="Наибольшее усилие гибки, кН"
+                                            DisplayMemberBinding="{Binding Path=Pmax}"/>
+                                <GridViewColumn Header="Наибольшее усилие гибки, тс"
+                                            DisplayMemberBinding="{Binding Path=LBH}"/>
+                                <GridViewColumn Header="Номинальное напряжение питающей сети, В"
+                                            DisplayMemberBinding="{Binding Path=NUN}"/>
+                                <GridViewColumn Header="Номинальная частота питающей сети, Гц"
+                                            DisplayMemberBinding="{Binding Path=NGN}"/>
+                                <GridViewColumn Header="Вид тока питающей сети"
+                                            DisplayMemberBinding="{Binding Path=VI}"/>
+                                <GridViewColumn Header="Расход аргона, м3/ч"
+                                            DisplayMemberBinding="{Binding Path=Arg}"/>
+                                <GridViewColumn Header="Давление аргона, кг/см2"
+                                            DisplayMemberBinding="{Binding Path=Parg}"/>
+                                <GridViewColumn Header="Изготовлен по техническим условиям"
+                                            DisplayMemberBinding="{Binding Path=Specification}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </TabItem>
+            
+            <TabItem Name="CompaniesTab">
+                <TabItem.Header>
+                    <TextBlock Text="Исходные данные"/>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" Command="{Binding OpenAddItemWnd}"/>
+                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItemWnd}"/>
+                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ScrollViewer x:Name="CompanyScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="ViewAllCompanies" ItemsSource="{Binding AllCompanies}"
+                          SelectedItem="{Binding SelectedCompany}">
+                        <ListView.View>
+                            <GridView
+                            ColumnHeaderTemplate="{StaticResource myHeaderTemplate}"
+                            ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
+                                <GridViewColumn Header="Название"
+                                            DisplayMemberBinding="{Binding Path=Com_Name}"/>
+                                <GridViewColumn Header="Район размещения предприятия"
+                                            DisplayMemberBinding="{Binding Path=Region}"/>
+                                <GridViewColumn Header="Режим работы предприятия (сменность)"
+                                            DisplayMemberBinding="{Binding Path=Shift}"/>
+                                <GridViewColumn Header="Продолжительность рабочей недели, час"
+                                            DisplayMemberBinding="{Binding Path=Week}"/>
+                                <GridViewColumn Header="Расчетная годовая программа сплавов, т"
+                                            DisplayMemberBinding="{Binding Path=Vprog}"/>
+                                <GridViewColumn Header="Состав расчетной годовой программы:"
+                                            DisplayMemberBinding="{Binding Path=Program}"/>
+                                <GridViewColumn Header="Описание годовой программы"
+                                            DisplayMemberBinding="{Binding Path=AppProgram}"/>
+                                <GridViewColumn Header="Масса расчетного листа, кг"
+                                            DisplayMemberBinding="{Binding Path=Rm}"/>
+                                <GridViewColumn Header="Количество листов в расчетной годовой программе, шт:"
+                                            DisplayMemberBinding="{Binding Path=CountM}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Margin="5" Background ="LightBlue" Foreground="DarkBlue" Content="Настройки" FontSize="16" Command="{Binding OpenSettingsWnd}"/>
+            <Button Margin="5" Background ="LightBlue" Foreground="DarkBlue" Content="Новый расчет" FontSize="16" Command="{Binding OpenAddNewReportWnd}"/>
+        </StackPanel>
+    </Grid>
+</Window>

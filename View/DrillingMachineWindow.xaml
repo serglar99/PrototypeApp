@@ -1,0 +1,66 @@
+﻿<Window x:Class="PrototypeApp.View.DrillingMachineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeApp.View"
+        mc:Ignorable="d"
+        Title="Станок для сверловки" Height="932" Width="368"
+        Name="DrillingMachineWnd">
+    <Grid Margin="10,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Название:"/>
+            <TextBox  x:Name="D_NameBlock" Text="{Binding D_Name}"/>
+            <TextBlock Text="Компания изготовитель:"/>
+            <TextBox  x:Name="CompanyBlock" Text="{Binding Company}"/>
+            <TextBlock Text="Страна изготовитель, т:"/>
+            <TextBox  x:Name="CountryBlock" Text="{Binding Country}"/>
+            <TextBlock Text="Дислокация компании:"/>
+            <TextBox  x:Name="TownBlock" Text="{Binding Town}"/>
+            <TextBlock Text="Стоимость станка, тыс. руб:"/>
+            <TextBox Text="{Binding Cost}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Стоимость шеф-монтажных и пуско-наладочных 
+работ, тыс. руб:" TextWrapping="WrapWithOverflow"/>
+            <TextBox Text="{Binding CostM}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text=" Дата фиксации стоимости станка:"/>
+            <TextBox Text="{Binding Date}" />
+            <TextBlock Text=" Срок изготовления станка, мес:"/>
+            <TextBox Text="{Binding Time}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Масса станка, т:"/>
+            <TextBox Text="{Binding Massa}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="  Габаритные размеры станка, мм:"/>
+            <TextBox Text="{Binding LBH}"/>
+            <TextBlock Text=" Номинальная мощность электродвигателя 
+привода главного движения, кВт:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Energ}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text=" Суммарная мощность электродвигателя, кВт:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding SumN}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Номинальное напряжение питающей сети, В:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding NUN}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Номинальная частота питающей сети, Гц:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding NGN}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Вид тока питающей сети:" TextWrapping="Wrap"/>
+            <TextBox  x:Name="VIBlock" Text="{Binding VI}"/>
+            <TextBlock Text="Наибольший диаметр сверления, мм:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Dmax}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Вид тока питающей сети:"/>
+            <TextBox Text="{Binding VI}"/>
+            <TextBlock Text="Вылет шпинделя наибольший, не менее, мм:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding E1}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Вылет шпинделя наименьший, не более, мм:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding E2}" PreviewTextInput="PreviewTextInput"/>
+            <TextBlock Text="Наибольший крутящий момент на шпинделе, Нм:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Emax}" PreviewTextInput="PreviewTextInput"/>
+        </StackPanel>
+        <Button Background ="LightBlue" Foreground="DarkBlue"  Margin="66,872,67,10" Content="Сохранить"
+                Command="{Binding SaveDrillingMachine}"
+                CommandParameter="{Binding ElementName=DrillingMachineWnd}" Grid.RowSpan="2"/>
+    </Grid>
+</Window>

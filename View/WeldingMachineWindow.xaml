@@ -1,0 +1,59 @@
+﻿<Window x:Class="PrototypeApp.View.WeldingMachineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeApp.View"
+        mc:Ignorable="d"
+        Title="Оборудование для сварки" Height="750" Width="410"
+        Name="WeldingMachineWnd">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Название:"/>
+            <TextBox x:Name="V_NameBlock" Text="{Binding V_Name}"/>
+            <TextBlock Text="Компания изготовитель:"/>
+            <TextBox x:Name="CompanyBlock" Text="{Binding Company}"/>
+            <TextBlock Text="Страна изготовитель, т:"/>
+            <TextBox x:Name="CountryBlock" Text="{Binding Country}"/>
+            <TextBlock Text="Дислокация компании:"/>
+            <TextBox x:Name="TownBlock" Text="{Binding Town}"/>
+            <TextBlock Text="Стоимость станка, тыс. руб:"/>
+            <TextBox Text="{Binding Cost}"/>
+            <TextBlock Text="Стоимость шеф-монтажных и пуско-наладочных 
+работ, тыс. руб:" TextWrapping="WrapWithOverflow"/>
+            <TextBox Text="{Binding CostM}"/>
+            <TextBlock Text=" Дата фиксации стоимости станка:"/>
+            <TextBox Text="{Binding Date}"/>
+            <TextBlock Text=" Срок изготовления станка, мес:"/>
+            <TextBox Text="{Binding Time}"/>
+            <TextBlock Text="Масса станка, т:"/>
+            <TextBox Text="{Binding Massa}"/>
+            <TextBlock Text="Габаритные размеры оборудования, мм:"/>
+            <TextBox Text="{Binding LBH}"/>
+            <TextBlock Text="Максимальная потребляемая мощность, не более, кВА:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Pmax}" />
+            <TextBlock Text="Номинальное напряжение питающей сети, В:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding NUN}"/>
+            <TextBlock Text="Номинальная частота питающей сети, Гц:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding NGN}" />
+            <TextBlock Text="Вид тока питающей сети:" TextWrapping="Wrap"/>
+            <TextBox x:Name="VIBlock" Text="{Binding VI}"/>
+            <TextBlock Text="Расход аргона, м*3/ч:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Arg}"/>
+            <TextBlock Text="Давление аргона, кг/см*2:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Parg}"/>
+            <TextBlock Text="Изготовлен по техническим условиям:" TextWrapping="Wrap"/>
+            <TextBox x:Name="SpecificationBlock" Text="{Binding Specification}"/>
+        </StackPanel>
+        <Button Background ="LightBlue" Foreground="DarkBlue"  Margin="55,5,55,10" Grid.Row="1" Content="Сохранить"
+                Command="{Binding SaveWeldingMachine}"
+                CommandParameter="{Binding ElementName=WeldingMachineWnd}"/>
+    </Grid>
+</Window>

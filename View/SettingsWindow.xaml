@@ -1,0 +1,156 @@
+﻿<Window x:Class="PrototypeApp.View.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeApp.View" xmlns:c="clr-namespace:PrototypeApp.ViewModel.Commands" 
+        Title="SettingsWindow" Height="886" Width="347">
+    <Grid Margin="0,27,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="172*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Width="253" Grid.ColumnSpan="2" Margin="47,0,0,0">
+            <TextBlock  Text="Коэффициент сменности:"/>
+            <TextBox x:Name="KsBlock">
+                <Binding Path="Ks" Source ="Settings">
+                    <Binding.ValidationRules>
+                        <c:DoubleRangeRule Min="0.5" Max="1.5"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <TextBlock  Text="Среднее количество рабочих дней в году:"/>
+            <TextBox x:Name="FBlock">
+                <Binding Path="F" Source ="Settings">
+                    <Binding.ValidationRules>
+                        <c:IntRangeRule Min="250" Max="300"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <TextBlock  Text="Доля гнутых деталей от общей массы титанового проката, %:" TextWrapping="Wrap"/>
+            <TextBox x:Name="GBlock">
+            <Binding Path="G" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule Min="0.5" Max="1.5"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock Text="Количество листов средневзвешенных размеров и толщины, 
+обрабатываемых на одном гибочно-правильном станке в смену, шт:" Height="67" Width="251" TextWrapping="Wrap"/>
+            <TextBox x:Name="PbBlock">
+                <Binding Path="Pb" Source ="Settings">
+                    <Binding.ValidationRules>
+                        <c:IntRangeRule Min="1" Max="10"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <TextBlock  Text="Средняя масса гнутой детали, кг:" TextWrapping="Wrap"/>
+            <TextBox x:Name="MbBlock">
+            <Binding Path="Mb" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:IntRangeRule Min="5" Max="50"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент загрузки станка для гибки:"/>
+            <TextBox x:Name="KzbBlock">
+            <Binding Path="Kzb" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule Min="0.3" Max="0.95"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент подготовительно - заключительного времени обслуживания 
+машины для гибки:" Height="46" TextWrapping="Wrap"/>
+            <TextBox x:Name="KbpodBlock">
+            <Binding Path="Kbpod" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule />
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock Text=" Количество листов средневзвешенных размеров и толщины, 
+обрабатываемых на одном радиально-сверлильный станке в смену, шт:" Height="67" Width="251" TextWrapping="Wrap"/>
+            <TextBox x:Name="PdBlock">
+                <Binding Path="Pd" Source ="Settings">
+                    <Binding.ValidationRules>
+                        <c:IntRangeRule Min="1" Max="10"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент загрузки машины для сверловки:" TextWrapping="Wrap"/>
+            <TextBox x:Name="KzdBlock">
+                <Binding Path="Kzd" Source ="Settings">
+                    <Binding.ValidationRules>
+                        <c:DoubleRangeRule Min="0.3" Max="0.95"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент подготовительно - заключительного времени обслуживания 
+машины для сверловки:" Height="46" TextWrapping="Wrap"/>
+            <TextBox x:Name="KdpodBlock">
+            <Binding Path="Kdpod" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule />
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент загрузки станка для резки:"/>
+            <TextBox x:Name="KzcBlock">
+            <Binding Path="Kzc" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule Min="0.3" Max="0.95"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент подготовительно - заключительного времени обслуживания 
+машины для резки:" Height="46" TextWrapping="Wrap"/>
+            <TextBox x:Name="KcpodBlock">
+            <Binding Path="Kdpod" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule />
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock Text="Среднестатистический сварочный ток, А:" />
+            <TextBox x:Name="IsvBlock">
+            <Binding Path="Isv" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:IntRangeRule Min="50" Max="200"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент наплавки, г/А⋅ч:"/>
+            <TextBox x:Name="AnBlock">
+                <Binding Path="An" Source ="Settings">
+                    <Binding.ValidationRules>
+                        <c:IntRangeRule Min="1" Max="5"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <TextBlock  Text="Коэффициент загрузки машины для сварки:"/>
+            <TextBox x:Name="KzwBlock">
+            <Binding Path="Kzw" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule Min="0.3" Max="0.95"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+            <TextBlock  Text="Количество наплавленного металла на 1 т сварных конструкций (для 
+титановых сплавов), кг:" Height="46" TextWrapping="Wrap"/>
+            <TextBox x:Name="KnBlock">
+            <Binding Path="Kn" Source ="Settings">
+                <Binding.ValidationRules>
+                    <c:DoubleRangeRule Min="30" Max="70"/>
+                </Binding.ValidationRules>
+            </Binding>
+            </TextBox>
+        </StackPanel>
+        <Button Background ="LightBlue" Foreground="DarkBlue"  Margin="55,809,55,0" Content="Сохранить"
+                Command="{Binding SaveSettings}"
+                CommandParameter="{Binding ElementName=SaveSettingsWnd}" Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

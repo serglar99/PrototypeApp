@@ -1,0 +1,44 @@
+﻿<Window x:Class="PrototypeApp.View.CompanyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeApp.View"
+        mc:Ignorable="d"
+        Title="Параметры предприятия" Height="686" Width="344"
+        Name="CompanyWnd">
+        
+    <Grid Margin="0,10,0,-6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Height="575" Width="270">
+            <TextBlock Text="Название:"/>
+            <TextBox x:Name="Сom_NameBlock" Text="{Binding Com_Name}"/>
+            <TextBlock  Text="Район размещения предприятия:"/>
+            <TextBox x:Name="RegionBlock" Text="{Binding Region}"/>
+            <TextBlock Text="Режим работы предприятия (сменность):"/>
+            <TextBox x:Name="ShiftBlock" Text="{Binding Shift}"/>
+            <TextBlock Text="Продолжительность рабочей недели, час:"/>
+            <TextBox x:Name="WeekBlock" Text="{Binding Week}"/>
+            <TextBlock Text="Расчетная годовая программа сплавов, т:"/>
+            <TextBox  x:Name="VprogkBlock" Text="{Binding Vprog}" />
+            <TextBlock Text="Состав расчетной годовой программы:"/>
+            <TextBox x:Name="ProgramkBlock" Text="{Binding Program}" Height="126" Width="270"/>
+            <TextBlock Text="Описание годовой программы:"/>
+            <TextBox x:Name="AppProgramkBlock" Text="{Binding AppProgram}" Height="163" Width="270"/>
+            <TextBlock Text="Масса расчетного листа, кг:"/>
+            <TextBox x:Name="RmBlock" Text="{Binding Rm}" />
+            <TextBlock Text="Количество листов в расчетной годовой 
+программе, шт:" TextWrapping="Wrap"/>
+            <TextBox x:Name="CountMBlock" Text="{Binding CountM}"/>
+        </StackPanel>
+        <Button Background ="LightBlue" Foreground="DarkBlue"   Content="Сохранить"
+                Command="{Binding SaveCompany}"
+                CommandParameter="{Binding ElementName=CompanyWnd}" Margin="56,616,69,10" Grid.RowSpan="2"/>
+
+    </Grid>
+</Window>

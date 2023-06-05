@@ -1,0 +1,72 @@
+﻿<Window x:Class="PrototypeApp.View.CuttingMachineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeApp.View"
+        mc:Ignorable="d"
+       Title="Оборудование для резки" Height="995" Width="410"
+        Name="CuttingMachineWnd">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Название:"/>
+            <TextBox x:Name="C_NameBlock" Text="{Binding C_Name}"/>
+            <TextBlock  Text="Компания изготовитель:"/>
+            <TextBox x:Name="CompanyBlock" Text="{Binding Company}"/>
+            <TextBlock  Text="Страна изготовитель, т:"/>
+            <TextBox x:Name="CountryBlock" Text="{Binding Country}"/>
+            <TextBlock  Text="Дислокация компании:"/>
+            <TextBox x:Name="TownBlock" Text="{Binding Town}"/> 
+            <TextBlock Text="Стоимость станка, тыс. руб:"/>
+            <TextBox Text="{Binding Cost}"/>
+            <TextBlock Text="Стоимость шеф-монтажных и пуско-наладочных 
+работ, тыс. руб:" TextWrapping="WrapWithOverflow"/>
+            <TextBox Text="{Binding CostM}"/>
+            <TextBlock Text=" Дата фиксации стоимости станка:"/>
+            <TextBox Text="{Binding Date}"/>
+            <TextBlock Text=" Срок изготовления станка, мес:"/>
+            <TextBox Text="{Binding Time}"/>
+            <TextBlock Text="Длина рабочего стола, мм:"/>
+            <TextBox Text="{Binding L}"/>
+            <TextBlock Text="Ширина рабочего стола, ммт:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding B}"/>
+            <TextBlock Text="Максимальная скорость резки, м/мин:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Vmax}"/>
+            <TextBlock Text="Максимальная скорость холостых 
+переходов, м/мин:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Vtra}"/>
+            <TextBlock Text="Расход абразива, г/мин:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Abr}"/>
+            <TextBlock Text="Скорость резки листа толщиной 4 мм из 
+сплава ПТ-3В, м/мин:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Vs}"/>
+            <TextBlock Text="Масса станка, т:"/>
+            <TextBox Text="{Binding Massa}"/>
+            <TextBlock Text="Установленная мощность станка, кВт:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Energ}"/>
+            <TextBlock Text="Номинальное напряжение питающей сети, В:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding NUN}"/>
+            <TextBlock Text="Номинальная частота питающей сети, Гц:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding NGN}"/>
+            <TextBlock Text="Вид тока питающей сети:" TextWrapping="Wrap"/>
+            <TextBox x:Name="VIBlock" Text="{Binding VI}"/>
+            <TextBlock Text="Марка допускаемого абразивного материала:" TextWrapping="Wrap"/>
+            <TextBox x:Name="AbrMBlock" Text="{Binding AbrM}"/>
+            <TextBlock Text=" Максимальная производительность насоса, 
+л/мин:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Ppump}"/>
+            <TextBlock Text=" Номинальное давление, бар:" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding Pnom}"/>
+        </StackPanel>
+        <Button Background ="LightBlue" Foreground="DarkBlue"  Margin="55,5,55,10" Grid.Row="1" Content="Сохранить"
+                Command="{Binding SaveCuttingMachine}"
+                CommandParameter="{Binding ElementName=CuttingMachineWnd}"/>
+    </Grid>
+</Window>

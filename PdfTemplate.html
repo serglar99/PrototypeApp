@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="invoice.css"></head>
+<body style="padding: 3rem">
+    <h1>Расчет</h1>
+
+    <h2 style="margin-top: 3rem">Название предприятия: {0}</h2>
+
+    <div style="margin-top: 3rem">
+        номер расчета: 1<br />
+    </div>
+
+    <h2 style="margin-top: 3rem"></h2>
+
+    <table style="border:1px solid black" ; class="table">
+        <thead>
+            <tr>
+                <th>Количество листов</th>
+                <th>Годовая программа сплавов</th>
+                <th>Кол-во станков для гибки</th>
+                <th>Кол-во станков для сверловки</th>
+                <th>Кол-во станков для резки</th>
+                <th>Кол-во станков для сварки</th>
+            </tr>
+        </thead>
+
+
+        <tr style="text-align: center;">
+            <td>{2}</td>
+            <td>{3}</td>
+            <td class="text-end">{4}</td>
+            <td class="text-end">{5}</td>
+            <td class="text-end">{6}</td>
+            <td class="text-end">{7}</td>
+        </tr>
+    </table>
+
+
+    <table style="border:1px solid black" ; class="table">
+        <thead>
+            <tr>
+                <th>Название станка для сверловки</th>
+                <th>Цена станка</th>
+        </thead>
+
+
+        <tr style="text-align: center;">
+            <td class="text-end">{8}</td>
+            <td>{9} тыс. руб</td>
+        </tr>
+
+
+        <tfoot style="border:1px solid black">
+            <tr>
+                <td class="text-end" colspan="4">Расчет создан:</td>
+                <td class="text-end">{10}</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
