@@ -12,12 +12,15 @@ namespace PrototypeApp.Services
             DrillingMachine drillingMachine = DbService.GetDrillingMachineById(report.DrillingMachineId);
             CuttingMachine cuttingMachine = DbService.GetCuttingMachineById(report.CuttingMachineId);
             WeldingMachine weldingMachine = DbService.GetWeldingMachineById(report.WeldingMachineId);
-            BendingMachine bendingMachine = DbService.GetBendingMachineById(report.SelectedCompany);
+            BendingMachine bendingMachine = DbService.GetBendingMachineById(report.BendingMachineId);
             Company company = DbService.GetCompanyById(report.SelectedCompany);
             string PdfTemplate = File.ReadAllText("PdfTemplate.html");
             string addData = String.Format(PdfTemplate, report.Name, report.Id, 
-                company.Vprog,company.CountM,report.BendingMachinesAmount, 
-                report.DrillingMachinesAmount, report.CuttingMachinesAmount, report.WeldingMachinesAmount, drillingMachine.D_Name, drillingMachine.Cost, drillingMachine.CostM, report.CreatedAt);
+                report.BendingMachinesAmount, 
+                report.DrillingMachinesAmount, report.CuttingMachinesAmount, report.WeldingMachinesAmount, drillingMachine.D_Name, drillingMachine.Cost, drillingMachine.CostM,
+                cuttingMachine.C_Name, cuttingMachine.Cost, cuttingMachine.CostM,
+                weldingMachine.V_Name, weldingMachine.Cost, weldingMachine.CostM,
+                bendingMachine.G_Name, bendingMachine.Cost, bendingMachine.CostM);
             
             PdfExport(addData, report.Name);
 
